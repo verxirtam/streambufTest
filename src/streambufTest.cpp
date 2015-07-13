@@ -9,6 +9,7 @@
 
 #include <streambuf>
 #include <cstring>
+#include <sstream>
 
 using namespace std;
 
@@ -18,21 +19,35 @@ public:
 	static const int length = 8;
 private:
 	//読み込み用文字列バッファ
-	char read[length];
+	char readBuffer[length];
 	//書き込み用文字列バッファ
-	char write[length];
+	char writeBuffer[length];
+
+
+	stringstream readStringStream;
+
+	stringstream writeStringStream;
+
 public:
 	TestStreambuf()
 	{
-		strcpy(read, "0123456");
-		read[7] = '7';
-		strcpy(write, "ABCDEFG");
-		write[7] = 'H';
+		strcpy(readBuffer, "0123456");
+		readBuffer[7] = '7';
+		strcpy(writeBuffer, "ABCDEFG");
+		writeBuffer[7] = 'H';
+
+		//readStringStreamの初期化
+		//読み込み用の文字列を格納
+		readStringStream<<"0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+		//writeStringStreamはから文字列として初期化
+		//ここでの処理は不要
 
 		//読み込み対象の文字列を設定する
-		setg(read, read, read + length);
+		//ここでは即座にアンダーフローさせるために全て同じアドレスを指定する
+		setg(readBuffer, readBuffer, readBuffer);
 		//書き込み対象の文字列を設定する
-		setp(write, write + length);
+		setp(writeBuffer, writeBuffer + length);
 	}
 	virtual ~TestStreambuf()
 	{
@@ -40,12 +55,12 @@ public:
 	//読み込み用文字列バッファの内容を返却する
 	const char* getRead()
 	{
-		return read;
+		return readBuffer;
 	}
 	//書き込み用文字列バッファの内容を返却する
 	const char* getWrite()
 	{
-		return write;
+		return writeBuffer;
 	}
 	char getReadCurrent(void) const
 	{
@@ -246,9 +261,23 @@ protected:
 	virtual int_type underflow()
 	{
 		cout << "underflow() called." << endl;
+
+		//デフォルトはEOFを返すのみ
 		//return traits_type::eof();
-		_M_in_cur=_M_in_beg;
-		return (int)(*_M_in_cur);
+
+		//すでに終端に達していたらeofを返す
+		if(readStringStream.eof())
+		{
+			return traits_type::eof();
+		}
+		//length文字分読み込みバッファに読み込む
+		readStringStream.read(readBuffer, this->length);
+		//実際に読み込めた文字数を取得
+		int get_length = readStringStream.gcount();
+		//読み込めた文字数に応じて読み込みバッファを設定
+		this->setg(this->eback(),this->eback(),this->eback()+get_length);
+		//読み込んた最初の文字の値をintで返却
+		return traits_type::to_int_type(*this->gptr());
 	}
 
 	/**
@@ -438,6 +467,16 @@ int main(void)
 	iostream io(&tsb);
 	char c=0;
 
+	///////////////////////
+	/*
+	int num;
+	io>>num;
+	cout<<"num:"<<num<<endl;
+	printNow(tsb);
+	io>>num;
+	cout<<"num:"<<num<<endl;
+	*/
+	///////////////////////
 	printNow(tsb);
 	cout << endl;
 
@@ -487,6 +526,13 @@ int main(void)
 	printNow(tsb);
 	cout << endl;
 	for (int i = 0; i < 4; i++)
+	{
+		readString(io, c);
+	}
+	printNow(tsb);
+	cout << endl;
+
+	for (int i = 0; i < 30; i++)
 	{
 		readString(io, c);
 	}
