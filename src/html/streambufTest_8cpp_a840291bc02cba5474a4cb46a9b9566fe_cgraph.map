@@ -1,12 +1,17 @@
 <map id="main" name="main">
-<area shape="rect" id="node2" href="$streambufTest_8cpp.html#a1ba3813a84350472f9ad9ae0e2add671" title="printNow" alt="" coords="109,81,184,108"/>
-<area shape="rect" id="node10" href="$streambufTest_8cpp.html#adc6ede92e484a7d782a11e21cab633ec" title="writeString" alt="" coords="105,132,189,159"/>
-<area shape="rect" id="node11" href="$streambufTest_8cpp.html#a2e40e0bd21448beb24fce8f32c411f40" title="readString" alt="" coords="106,183,187,209"/>
-<area shape="rect" id="node3" href="$classTestStreambuf.html#a4909410a45566d0c1f95d91582bb0f6d" title="TestStreambuf::getNowRead" alt="" coords="237,5,429,32"/>
-<area shape="rect" id="node4" href="$streambufTest_8cpp.html#a84caced49527aa4b519db25da27ce6f0" title="printRead" alt="" coords="294,56,373,83"/>
-<area shape="rect" id="node7" href="$classTestStreambuf.html#ae229b4b9d70f973018c705171e7f9a79" title="TestStreambuf::getNowWrite" alt="" coords="237,107,429,133"/>
-<area shape="rect" id="node8" href="$streambufTest_8cpp.html#a0d554121958485cddfa324b22c2cf157" title="printWrite" alt="" coords="294,157,373,184"/>
-<area shape="rect" id="node5" href="$streambufTest_8cpp.html#ad8609d36c943dc07127eac4507918ca4" title="printCharSequence" alt="" coords="493,107,627,133"/>
-<area shape="rect" id="node6" href="$classTestStreambuf.html#ab799c18f9b2aec06078d0eb5b6ccd1f7" title="TestStreambuf::getRead" alt="" coords="477,56,643,83"/>
-<area shape="rect" id="node9" href="$classTestStreambuf.html#a4521a543863cb2feffec73f678d254da" title="TestStreambuf::getWrite" alt="" coords="477,157,643,184"/>
+<area shape="rect" id="node2" href="$streambufTest_8cpp.html#a1ba3813a84350472f9ad9ae0e2add671" title="printNow" alt="" coords="167,183,241,209"/>
+<area shape="rect" id="node14" href="$streambufTest_8cpp.html#adc6ede92e484a7d782a11e21cab633ec" title="writeString" alt="" coords="162,233,246,260"/>
+<area shape="rect" id="node15" href="$streambufTest_8cpp.html#a2e40e0bd21448beb24fce8f32c411f40" title="readString" alt="" coords="163,284,245,311"/>
+<area shape="rect" id="node16" href="$classTestStreambuf.html#ab422bce1d046167e640ad6bf88196966" title="TestStreambuf::getWriteString\lStream" alt="" coords="105,335,303,377"/>
+<area shape="rect" id="node3" href="$classTestStreambuf.html#ab73ad7b4c0cbc37f079b3fb4300d32cc" title="TestStreambuf::getReadBegin" alt="" coords="357,5,555,32"/>
+<area shape="rect" id="node4" href="$classTestStreambuf.html#a7b9c22f4b7c20c89f28ee226a3a156d2" title="TestStreambuf::getReadCurrent" alt="" coords="352,56,560,83"/>
+<area shape="rect" id="node5" href="$classTestStreambuf.html#a65adfdd367020c149dfe62fe41a3f9ed" title="TestStreambuf::getReadEnd" alt="" coords="362,107,550,133"/>
+<area shape="rect" id="node6" href="$streambufTest_8cpp.html#a84caced49527aa4b519db25da27ce6f0" title="printRead" alt="" coords="417,157,495,184"/>
+<area shape="rect" id="node9" href="$classTestStreambuf.html#ac1f759188c97ca5e6c89e5e7895363f3" title="TestStreambuf::getWriteBegin" alt="" coords="357,208,555,235"/>
+<area shape="rect" id="node10" href="$classTestStreambuf.html#ad219296d19d672c1fe2baa2934dfdb47" title="TestStreambuf::getWriteCurrent" alt="" coords="352,259,560,285"/>
+<area shape="rect" id="node11" href="$classTestStreambuf.html#ad5e19ea065f37df801e2208e4ef06622" title="TestStreambuf::getWriteEnd" alt="" coords="362,309,550,336"/>
+<area shape="rect" id="node12" href="$streambufTest_8cpp.html#a0d554121958485cddfa324b22c2cf157" title="printWrite" alt="" coords="417,360,495,387"/>
+<area shape="rect" id="node7" href="$streambufTest_8cpp.html#ad8609d36c943dc07127eac4507918ca4" title="printCharSequence" alt="" coords="624,259,757,285"/>
+<area shape="rect" id="node8" href="$classTestStreambuf.html#ab799c18f9b2aec06078d0eb5b6ccd1f7" title="TestStreambuf::getRead" alt="" coords="608,157,773,184"/>
+<area shape="rect" id="node13" href="$classTestStreambuf.html#a4521a543863cb2feffec73f678d254da" title="TestStreambuf::getWrite" alt="" coords="608,360,773,387"/>
 </map>

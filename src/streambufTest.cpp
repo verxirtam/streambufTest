@@ -86,7 +86,14 @@ public:
 	{
 		return *this->epptr();
 	}
-
+	const stringstream & getReadStringStream()
+	{
+		return readStringStream;
+	}
+	const stringstream & getWriteStringStream()
+	{
+		return writeStringStream;
+	}
 //////////////////////////
 protected:
 	///////////////////////////////////////////////////////////////
@@ -166,6 +173,9 @@ protected:
 	virtual int sync()
 	{
 		cout<<"sync() called."<<endl;
+		//書き込みバッファの内容を書き出す
+		writeStringStream.write(this->pbase(), this->pptr() - this->pbase());
+
 		return 0;
 	}
 
@@ -393,9 +403,14 @@ protected:
 		cout << "overflow() called." << endl;
 		//return traits_type::eof();
 
-		_M_out_cur=_M_out_beg;
-		(*_M_out_cur)=__c;
-		_M_out_cur++;
+		//書き込みバッファの内容をwriteStringStreamに追記する
+		writeStringStream.write(writeBuffer, this->length);
+		//書き込みバッファの設定を初期化する
+		setp(writeBuffer, writeBuffer + length);
+
+		//入力された文字を書き込む
+		this->sputc(__c);
+
 		return traits_type::to_int_type(__c);
 
 	}
@@ -539,6 +554,20 @@ int main(void)
 	printNow(tsb);
 	cout << endl;
 
+	cout << "WriteStringStream :" << endl;
+	cout << tsb.getWriteStringStream().str().c_str() << endl;
+
+	cout << endl;
+
+	//バッファの内容を同期する
+	cout << "io.flash() start." << endl;
+	io.flush();
+	cout << "io.flash() end." << endl;
+
+	cout << endl;
+
+	cout << "WriteStringStream :" << endl;
+	cout << tsb.getWriteStringStream().str().c_str() << endl;
 
 	return 0;
 }
